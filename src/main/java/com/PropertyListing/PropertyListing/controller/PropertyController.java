@@ -17,25 +17,25 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping
-    @CrossOrigin(origins = {"http://localhost:3000,https://propertylistingfinal-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app"})
     public ResponseEntity<List<Property>> getAllProperties() {
         return ResponseEntity.ok(propertyService.getAllProperties());
     }
 
     @PostMapping
-    @CrossOrigin(origins = {"http://localhost:3000,https://propertylistingfinal-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app"})
     public ResponseEntity<Property> createProperty(@RequestBody Property property) {
         return ResponseEntity.status(HttpStatus.CREATED).body(propertyService.createProperty(property));
     }
 
     @PutMapping("/{id}")
-    @CrossOrigin(origins = {"http://localhost:3000,https://propertylistingfinal-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app"})
     public ResponseEntity<Property> updateProperty(@PathVariable Long id, @RequestBody Property updatedProperty) {
         return ResponseEntity.ok(propertyService.updateProperty(id, updatedProperty));
     }
 
     @DeleteMapping("/{id}")
-    @CrossOrigin(origins = {"http://localhost:3000,https://propertylistingfinal-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app"})
     public ResponseEntity<Void> deleteProperty(@PathVariable Long id) {
         propertyService.deleteProperty(id);
         return ResponseEntity.noContent().build();
