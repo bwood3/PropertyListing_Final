@@ -17,7 +17,7 @@ public class PropertyController {
     private PropertyService propertyService;
 
     @GetMapping
-    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app"})
+    @CrossOrigin(origins = {"https://propertysearchfinal-production.up.railway.app/properties/search"})
     public ResponseEntity<List<Property>> getAllProperties() {
         return ResponseEntity.ok(propertyService.getAllProperties());
     }
