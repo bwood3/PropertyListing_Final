@@ -52,6 +52,4 @@ public class PropertyController {
         propertyService.deleteProperty(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }
