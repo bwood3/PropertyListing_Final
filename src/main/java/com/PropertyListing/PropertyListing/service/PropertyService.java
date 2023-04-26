@@ -3,6 +3,7 @@ package com.PropertyListing.PropertyListing.service;
 
 import com.PropertyListing.PropertyListing.model.Property;
 import com.PropertyListing.PropertyListing.repository.PropertyRepository;
+import jakarta.el.PropertyNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,6 +36,10 @@ public class PropertyService {
     }
     public List<Property> findAllById(List<Long> ids) {
         return propertyRepository.findAllById(ids);
+    }
+    public Property getPropertyById(Long id) {
+        return propertyRepository.findById(id)
+                .orElseThrow(() -> new PropertyNotFoundException("Property not found with id " + id));
     }
 
     public void deleteProperty(Long id) {

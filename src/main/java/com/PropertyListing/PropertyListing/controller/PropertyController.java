@@ -22,6 +22,18 @@ public class PropertyController {
         return ResponseEntity.ok(propertyService.getAllProperties());
     }
 
+    @GetMapping("/{id}")
+    @CrossOrigin(origins = {"https://propertylistingfinal-production.up.railway.app", "http://localhost:3000"})
+    public ResponseEntity<Property> getPropertyById(@PathVariable Long id) {
+        return ResponseEntity.ok(propertyService.getPropertyById(id));
+    }
+
+    @GetMapping("/by-ids")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<Property> getPropertiesByIds(@RequestParam("ids") List<Long> ids) {
+        return propertyService.findAllById(ids);
+    }
+
     @PostMapping
     @CrossOrigin(origins = {"https://propertylistingfinal-production.up.railway.app", "http://localhost:3000"})
     public ResponseEntity<Property> createProperty(@RequestBody Property property) {
@@ -41,9 +53,5 @@ public class PropertyController {
         return ResponseEntity.noContent().build();
     }
 
-    @GetMapping("/by-ids")
-    @CrossOrigin(origins = "http://localhost:3000")
-    public List<Property> getPropertiesByIds(@RequestParam("ids") List<Long> ids) {
-        return propertyService.findAllById(ids);
-    }
+
 }
