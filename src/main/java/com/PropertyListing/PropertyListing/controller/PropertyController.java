@@ -40,4 +40,10 @@ public class PropertyController {
         propertyService.deleteProperty(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/by-ids")
+    @CrossOrigin(origins = "http://localhost:3000")
+    public List<Property> getPropertiesByIds(@RequestParam("ids") List<Long> ids) {
+        return propertyService.findAllById(ids);
+    }
 }

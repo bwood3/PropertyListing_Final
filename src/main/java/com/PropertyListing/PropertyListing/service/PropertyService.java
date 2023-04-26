@@ -33,6 +33,9 @@ public class PropertyService {
                 })
                 .orElseThrow(() -> new RuntimeException("Property not found"));
     }
+    public List<Property> findAllById(List<Long> ids) {
+        return propertyRepository.findAllById(ids);
+    }
 
     public void deleteProperty(Long id) {
         propertyRepository.deleteById(id);
